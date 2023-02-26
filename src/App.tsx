@@ -1,9 +1,17 @@
-import "./App.scss";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./components/pages/Home";
+import { Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <AuthContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }
