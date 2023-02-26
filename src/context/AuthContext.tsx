@@ -8,26 +8,46 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-interface ISignUp {
+interface IUserData {
   email: string;
   password: string;
 }
 
 interface IContext {
   signUp: any;
-  user: {};
+  logIn: any;
+  logOut: any;
+  user: any;
 }
 
 const AuthContext = createContext<IContext | null>(null);
 
 export function AuthContextProvider({ children }: any) {
-  const [user, setUser] = useState({});
-  function signUp({ email, password }: ISignUp) {
+  const [user, setUser]: any = useState({});
+
+  function signUp({ email, password }: IUserData) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
+  function logIn({ email, password }: IUserData) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  function logOut({}) {
+    return signOut(auth);
+  }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  });
+
   return (
-    <AuthContext.Provider value={{ signUp, user }}>
+    <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
       {children}
     </AuthContext.Provider>
   );
