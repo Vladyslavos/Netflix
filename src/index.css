@@ -12,3 +12,33 @@ body {
   background-color: black;
   font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+::selection {
+  background: #ccc;
+}
+::-moz-selection {
+  background: #ccc;
+}
+::-webkit-selection {
+  background: #ccc;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #323941;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(24, 24, 24, 0.8);
+  border-radius: 8px;
+  border: 3px solid rgba(24, 24, 24, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
