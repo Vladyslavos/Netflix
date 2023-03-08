@@ -1,7 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 
-export default function () {
+export default function Signup() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const { user, signUp }: any = UserAuth();
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      signUp({ email: email, password: password });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full h-screen">
       <img
@@ -14,16 +28,18 @@ export default function () {
         <div className="max-w-[450px] h-[500px] mx-auto bg-black/75 text-white">
           <div className="max-w-[320px] mx-auto py-16">
             <h1 className="text-3xl font-bold">Sign Up</h1>
-            <form className="w-full flex flex-col py-4">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col py-4">
               <input
                 type={"email"}
                 placeholder={"Email or phone number"}
                 className={"p-3 my-2 bg-gray-700 rounded"}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type={"password"}
                 placeholder={"Password"}
                 className={"p-3 my-2 bg-gray-700 rounded"}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="bg-red-600 my-4 py-3 font-bold">
                 Sign Up

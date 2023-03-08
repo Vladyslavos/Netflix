@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { Value } from "sass";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -9,8 +8,8 @@ import {
 } from "firebase/auth";
 
 interface IUserData {
-  email: string;
-  password: string;
+  email: any;
+  password: any;
 }
 
 interface IContext {
@@ -20,12 +19,13 @@ interface IContext {
   user: any;
 }
 
-const AuthContext = createContext<IContext | null>(null);
+const AuthContext = createContext<IContext | number>(1);
 
 export function AuthContextProvider({ children }: any) {
   const [user, setUser]: any = useState({});
 
   function signUp({ email, password }: IUserData) {
+    console.log("email: " + email + ", password: " + password);
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
