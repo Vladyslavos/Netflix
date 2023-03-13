@@ -19,7 +19,7 @@ interface IContext {
   user: any;
 }
 
-const AuthContext = createContext<IContext | number>(1);
+const AuthContext = createContext<IContext | null>(null);
 
 export function AuthContextProvider({ children }: any) {
   const [user, setUser]: any = useState({});
@@ -33,7 +33,7 @@ export function AuthContextProvider({ children }: any) {
     return signInWithEmailAndPassword(auth, email, password);
   }
 
-  function logOut({}) {
+  function logOut() {
     return signOut(auth);
   }
 

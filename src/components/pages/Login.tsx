@@ -1,7 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 
 export default function Login() {
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const [error, setError] = React.useState<string>("");
+  const { user, logIn }: any = UserAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setError("");
+      await logIn({ email: email, password: password });
+      navigate("/");
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error);
+        setError(error.message);
+      }
+    }
+  };
   return (
     <div className="w-full h-screen">
       <img
@@ -14,19 +34,24 @@ export default function Login() {
         <div className="max-w-[450px] h-[500px] mx-auto bg-black/75 text-white">
           <div className="max-w-[320px] mx-auto py-16">
             <h1 className="text-3xl font-bold">Sign In</h1>
-            <form className="w-full flex flex-col py-4">
+            {error && (
+              <p className="p-3 bg-red-600 my-3 rounded font-bold">{error}</p>
+            )}
+            <form className="w-full flex flex-col py-4" onSubmit={handleSubmit}>
               <input
                 type={"email"}
                 placeholder={"Email or phone number"}
                 className={"p-3 my-2 bg-gray-700 rounded"}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type={"password"}
                 placeholder={"Password"}
                 className={"p-3 my-2 bg-gray-700 rounded"}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="bg-red-600 my-4 py-3 font-bold">
-                Sign Up
+                Sign In
               </button>
               <div className="flex justify-between text-sm text-gray-500">
                 <p>
