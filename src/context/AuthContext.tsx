@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
 
 interface IUserData {
   email: any;
@@ -25,8 +26,10 @@ export function AuthContextProvider({ children }: any) {
   const [user, setUser]: any = useState({});
 
   function signUp({ email, password }: IUserData) {
-    console.log("email: " + email + ", password: " + password);
-    return createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password);
+    setDoc(doc(db, "users", email), {
+      savedShows: [],
+    });
   }
 
   function logIn({ email, password }: IUserData) {

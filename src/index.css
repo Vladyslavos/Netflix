@@ -12,7 +12,11 @@ body {
   background-color: black;
   font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+hr {
+  height: 7px;
+  border: none;
+  background-color: #232323;
+}
 ::selection {
   background: #ccc;
 }
