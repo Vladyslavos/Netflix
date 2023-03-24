@@ -1,22 +1,36 @@
 import React from "react";
-import Collapsible from "react-collapsible";
+import AccordionItem from "./AccordionItem";
+import { data } from "./Questions";
 
 export default function Accordion() {
+  const [open, setOpen] = React.useState<any>(false);
+
+  const toggle = (i: any) => {
+    if (open === i) {
+      return setOpen(null);
+    } else {
+      setOpen(i);
+    }
+  };
   return (
-    <div>
-      <Collapsible
-        trigger="Start here"
-        className="text-red m-0 h-[340px] w-[300px] bg-slate-100"
-      >
-        <p className="text-black">
-          This is the collapsible content. It can be any element or React
-          component you like.
-        </p>
-        <p className="text-black">
-          It can even be another Collapsible component. Check out the next
-          section!
-        </p>
-      </Collapsible>
-    </div>
+    <>
+      <h1 className="text-white text-6xl font-bold flex justify-center">
+        Frequently Asked Questions
+      </h1>
+      <div className="flex justify-center pt-[50px]">
+        <div className="text-white p-5 sm:w-[550px] md:w-[650px] lg:w-[1150px]">
+          {data.map((item, i): any => {
+            return (
+              <AccordionItem
+                key={i}
+                open={i === open}
+                item={item}
+                toggle={() => toggle(i)}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </>
   );
 }

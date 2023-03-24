@@ -1,13 +1,15 @@
 import React from "react";
 import Accordion from "./Accordion";
-
+import NetflixTv from "../../assets/Netflix1.gif";
+import NetflixDownload from "../../assets/Netflix2.gif";
+import NetflixGadgets from "../../assets/Netflix3.gif";
 export default function Info() {
   return (
     <>
       <div>
         <hr />
-        <div className="flex flex-col lg:flex-row p-2 md:p-4">
-          <div className="text-white sm:mt-10 sm:w-[300px] md:w-[450px] m-auto">
+        <div className="flex flex-col lg:flex-row p-2 md:p-4 items-center">
+          <div className="text-white sm:mt-10 sm:w-full md:w-[480px] m-auto">
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-left">
               Enjoy on your TV.
             </h1>
@@ -16,23 +18,15 @@ export default function Info() {
               Blu-ray players and more.
             </p>
           </div>
-          <img
-            src="https://netflix-images.manikantp.repl.co/Netflix1.gif"
-            alt="netflix-gif"
-            className="h-[350px]"
-          />
+          <img src={NetflixTv} alt="netflix-gif" className="h-[350px]" />
         </div>
       </div>
 
       <div>
         <hr />
-        <div className="flex flex-col lg:flex-row 0-2 md:p-4">
-          <img
-            src="https://netflix-images.manikantp.repl.co/Netflix2.gif"
-            alt="netflix-gif"
-            className="h-[350px]"
-          />
-          <div className="sm:mt-10 sm:w-[300px] md:w-[450px] m-auto">
+        <div className="flex flex-col lg:flex-row 0-2 md:p-4 items-center">
+          <img src={NetflixDownload} alt="netflix-gif" className="h-[350px]" />
+          <div className="sm:mt-10 sm:w-full md:w-[480px] m-auto">
             <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-bold text-left">
               Download your shows to watch offline.
             </h1>
@@ -45,8 +39,8 @@ export default function Info() {
 
       <div>
         <hr />
-        <div className="flex flex-col lg:flex-row p-2 md:p-4">
-          <div className="text-white sm:mt-10 sm:w-[300px] md:w-[450px] m-auto">
+        <div className="flex flex-col lg:flex-row p-2 md:p-4 items-center">
+          <div className="text-white sm:mt-10 sm:w-full md:w-[480px] m-auto">
             <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold text-left">
               Watch everywhere.
             </h1>
@@ -55,11 +49,7 @@ export default function Info() {
               laptop, and TV without paying more.
             </p>
           </div>
-          <img
-            src="https://netflix-images.manikantp.repl.co/Netflix3.gif"
-            alt="netflix-gif"
-            className="h-[350px]"
-          />
+          <img src={NetflixGadgets} alt="netflix-gif" className="h-[350px]" />
         </div>
       </div>
 
@@ -71,7 +61,7 @@ export default function Info() {
             alt="netflix-img"
             className="h-[350px]"
           />
-          <div className="sm:mt-18 sm:w-[300px] md:w-[450px] m-auto">
+          <div className="sm:mt-18 sm:w-full md:w-[480px] m-auto">
             <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-bold text-left">
               Create profiles for kids.
             </h1>
@@ -81,8 +71,8 @@ export default function Info() {
             </p>
           </div>
         </div>
-        <Accordion />
       </div>
+      <Accordion />
     </>
   );
 }
