@@ -46,3 +46,7 @@ hr {
 ::-webkit-scrollbar-thumb:hover {
   background: red;
 }
+
+ul {
+  padding-top: 10px;
+}

@@ -3,6 +3,7 @@ import Accordion from "./Accordion";
 import NetflixTv from "../../assets/Netflix1.gif";
 import NetflixDownload from "../../assets/Netflix2.gif";
 import NetflixGadgets from "../../assets/Netflix3.gif";
+import Footer from "../footer/Footer";
 export default function Info() {
   return (
     <>
@@ -73,6 +74,7 @@ export default function Info() {
         </div>
       </div>
       <Accordion />
+      <Footer />
     </>
   );
 }

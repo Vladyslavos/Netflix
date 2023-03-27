@@ -8,6 +8,11 @@ export default function Movie({ item }: any) {
   const [like, setLike] = React.useState<boolean>(false);
   const [saved, setSaved] = React.useState<boolean>(false);
   const { user }: any = UserAuth();
+  const [showImage, setShowImage] = React.useState(true);
+
+  const hideImg = (e: any) => {
+    setShowImage(false);
+  };
 
   const movieId = doc(db, "users", `${user?.email}`);
 
@@ -31,7 +36,9 @@ export default function Movie({ item }: any) {
       <img
         src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
         alt={item?.title}
+        onError={hideImg}
       />
+
       <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
           {item?.title}

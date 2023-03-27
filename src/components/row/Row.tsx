@@ -16,9 +16,13 @@ export default function Row({ title, fetchURL, rowId }: IProps) {
   const [movies, setMovies] = React.useState<IMovies[]>([]);
 
   React.useEffect(() => {
-    axios.get(fetchURL).then((res) => {
-      setMovies(res.data.results);
-    });
+    try {
+      axios.get(fetchURL).then((res) => {
+        setMovies(res.data.results);
+      });
+    } catch (e) {
+      console.error("Error>", e);
+    }
   }, [fetchURL]);
 
   const slideLeft = () => {
