@@ -38,3 +38,9 @@ export interface IMovies {
   vote_average: number;
   vote_count: number;
 }
+
+export interface IItem {
+  img: string;
+  id: number;
+  title: string;
+}

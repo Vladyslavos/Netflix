@@ -5,14 +5,11 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+import { AiOutlineClose } from "react-icons/ai";
+import { IItem } from "../../types/type";
 
 export default function SavedShows() {
-  interface IData {
-    img: string;
-    id: number;
-    title: string;
-  }
-  const [movies, setMovies] = React.useState<any>([]);
+  const [movies, setMovies] = React.useState<IItem[]>([]);
   const { user }: any = UserAuth();
 
   const slideLeft = () => {
@@ -30,6 +27,18 @@ export default function SavedShows() {
       setMovies(doc.data()?.savedShows);
     });
   }, [user?.email]);
+
+  const movieRef = doc(db, "users", `${user?.email}`);
+  const deleteShow = async (passedID: number) => {
+    try {
+      const result = movies.filter((item: IItem) => item.id !== passedID);
+      await updateDoc(movieRef, {
+        savedShows: result,
+      });
+    } catch (e) {
+      console.error("Error", e);
+    }
+  };
 
   return (
     <>
@@ -51,7 +60,7 @@ export default function SavedShows() {
             id={"slider"}
             className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
           >
-            {movies.map(({ img, id, title }: IData) => (
+            {movies.map(({ img, id, title }: IItem) => (
               <div
                 key={id}
                 className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 "
@@ -63,6 +72,14 @@ export default function SavedShows() {
                 <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
                   <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
                     {title}
+                  </p>
+                  <p
+                    className="absolute text-gray-300 top-4 right-4"
+                    onClick={() => {
+                      deleteShow(id);
+                    }}
+                  >
+                    <AiOutlineClose />
                   </p>
                 </div>
               </div>

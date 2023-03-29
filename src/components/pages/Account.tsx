@@ -12,7 +12,7 @@ export default function Account() {
           className=" w-full  object-cover h-[400px]"
         />
         <div className="absolute top-[20%] p-4 md:p-8">
-          <h1 className="text-3xl md:text-5xl font-bold">My Movies:</h1>
+          <h1 className="text-3xl md:text-5xl font-bold">My Movies</h1>
         </div>
       </div>
       <SavedShows />

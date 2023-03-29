@@ -7,11 +7,11 @@ export default function Footer() {
       <div className="text-center p-5 ">
         <h4 className="text-left">
           Questions? Call
-          <a href="tel:+0800-509-417" className="underline pl-1">
+          <a href="tel:+0800-509-417" className="underline pl-1 cursor-pointer">
             0800-509-417
           </a>
         </h4>
-        <div className="text-left flex flex-col justify-center pt-3  underline w-[300px] md:pt-4 md:justify-between md:flex-row md:w-[700px] lg:w-[900px]">
+        <div className="text-left flex flex-col justify-center pt-3  underline w-[300px] md:pt-4 md:justify-between md:flex-row md:w-[700px] lg:w-[900px] cursor-pointer">
           <ul>
             <li>FAQ</li>
             <li>Account</li>
