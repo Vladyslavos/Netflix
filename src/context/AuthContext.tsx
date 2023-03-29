@@ -7,18 +7,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-
-interface IUserData {
-  email: any;
-  password: any;
-}
-
-interface IContext {
-  signUp: any;
-  logIn: any;
-  logOut: any;
-  user: any;
-}
+import { IContext, IUserData } from "../types/type";
 
 const AuthContext = createContext<IContext | null>(null);
 

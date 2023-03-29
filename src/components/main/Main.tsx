@@ -2,11 +2,11 @@ import { HideImage } from "@mui/icons-material";
 import axios from "axios";
 import React from "react";
 import requests from "../../requests/Requests";
-import { IData, Result } from "../../types/type";
+import { IData, IResult } from "../../types/type";
 
 export default function Main() {
-  const [movies, setMovies] = React.useState<Result[]>([]);
-  const movie: Result = movies[Math.floor(Math.random() * movies.length)];
+  const [movies, setMovies] = React.useState<IResult[]>([]);
+  const movie: IResult = movies[Math.floor(Math.random() * movies.length)];
 
   React.useEffect(() => {
     try {

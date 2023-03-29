@@ -1,11 +1,11 @@
 export interface IData {
   page: number;
-  results: Result[];
+  results: IResult[];
   total_pages: number;
   total_results: number;
 }
 
-export interface Result {
+export interface IResult {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -43,4 +43,16 @@ export interface IItem {
   img: string;
   id: number;
   title: string;
+}
+
+export interface IUserData {
+  email: any;
+  password: any;
+}
+
+export interface IContext {
+  signUp: any;
+  logIn: any;
+  logOut: any;
+  user: any;
 }
