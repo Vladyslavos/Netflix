@@ -7,6 +7,11 @@ import { db } from "../../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 
 export default function SavedShows() {
+  interface IData {
+    img: string;
+    id: number;
+    title: string;
+  }
   const [movies, setMovies] = React.useState<any>([]);
   const { user }: any = UserAuth();
 
@@ -23,7 +28,6 @@ export default function SavedShows() {
   React.useEffect(() => {
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setMovies(doc.data()?.savedShows);
-      console.log(movies);
     });
   }, [user?.email]);
 
@@ -47,18 +51,18 @@ export default function SavedShows() {
             id={"slider"}
             className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
           >
-            {movies.map(({ item }: any) => (
+            {movies.map(({ img, id, title }: IData) => (
               <div
-                key={item.id}
+                key={id}
                 className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 "
               >
                 <img
-                  src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
-                  alt={item?.title}
+                  src={`https://image.tmdb.org/t/p/w500/${img}`}
+                  alt={title}
                 />
                 <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
                   <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
-                    {item?.title}
+                    {title}
                   </p>
                 </div>
               </div>
