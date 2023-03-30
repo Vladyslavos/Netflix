@@ -45,7 +45,7 @@ export default function SavedShows() {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        custom={1}
+        custom={2}
         variants={animation}
         viewport={{ once: true }}
       >

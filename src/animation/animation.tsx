@@ -6,6 +6,6 @@ export const animation = {
   visible: (custom: number) => ({
     x: 0,
     opacity: 1,
-    transition: { delay: custom * 0.4 },
+    transition: { delay: custom * 0.25 },
   }),
 };

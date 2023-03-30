@@ -1,8 +1,17 @@
 import React from "react";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="w-full h-[300px] text-[#b3b3b3] flex justify-center">
+    <motion.footer
+      className="w-full h-[300px] text-[#b3b3b3] flex justify-center"
+      initial="hidden"
+      whileInView="visible"
+      custom={1}
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <hr />
       <div className="text-center p-5 ">
         <h4 className="text-left">
@@ -36,6 +45,6 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

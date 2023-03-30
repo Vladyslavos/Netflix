@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Login() {
   const [email, setEmail] = React.useState<string>("");
@@ -31,13 +33,28 @@ export default function Login() {
       />
       <div className="w-full h-full bg-black/60 fixed top-0 left-0"></div>
       <div className="fixed w-full px-4 py-24 z-50">
-        <div className="max-w-[450px] h-[500px] mx-auto bg-black/75 text-white">
+        <motion.div
+          className="max-w-[450px] h-[500px] mx-auto bg-black/75 text-white"
+          initial="hidden"
+          whileInView="visible"
+          custom={1}
+          variants={animation}
+          viewport={{ once: true }}
+        >
           <div className="max-w-[320px] mx-auto py-16">
             <h1 className="text-3xl font-bold">Sign In</h1>
             {error && (
               <p className="p-3 bg-red-600 my-3 rounded font-bold">{error}</p>
             )}
-            <form className="w-full flex flex-col py-4" onSubmit={handleSubmit}>
+            <motion.form
+              className="w-full flex flex-col py-4"
+              onSubmit={handleSubmit}
+              initial="hidden"
+              whileInView="visible"
+              custom={2}
+              variants={animation}
+              viewport={{ once: true }}
+            >
               <input
                 type={"email"}
                 placeholder={"Email or phone number"}
@@ -66,9 +83,9 @@ export default function Login() {
                   Sign Up
                 </Link>
               </p>
-            </form>
+            </motion.form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

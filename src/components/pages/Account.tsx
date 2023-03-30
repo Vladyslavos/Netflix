@@ -1,9 +1,17 @@
 import React from "react";
 import SavedShows from "../savedshows/SavedShows";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Account() {
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      custom={1}
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <div className="w-full text-white">
         <div className="bg-black/60 fixed top-0 left-0 h-[550px] w-full"></div>
         <img
@@ -16,6 +24,6 @@ export default function Account() {
         </div>
       </div>
       <SavedShows />
-    </>
+    </motion.div>
   );
 }

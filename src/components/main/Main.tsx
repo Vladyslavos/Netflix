@@ -3,6 +3,8 @@ import axios from "axios";
 import React from "react";
 import requests from "../../requests/Requests";
 import { IData, IResult } from "../../types/type";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Main() {
   const [movies, setMovies] = React.useState<IResult[]>([]);
@@ -27,7 +29,14 @@ export default function Main() {
   };
 
   return (
-    <div className="w-full h-[600px] text-white">
+    <motion.div
+      className="w-full h-[600px] text-white"
+      initial="hidden"
+      whileInView="visible"
+      custom={1}
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <div className="w-full h-full">
         <div className="absolute w-full h-[600px] bg-gradient-to-r from-black"></div>
         <img
@@ -53,6 +62,6 @@ export default function Main() {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

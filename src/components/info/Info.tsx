@@ -4,10 +4,18 @@ import NetflixTv from "../../assets/Netflix1.gif";
 import NetflixDownload from "../../assets/Netflix2.gif";
 import NetflixGadgets from "../../assets/Netflix3.gif";
 import Footer from "../footer/Footer";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 export default function Info() {
   return (
     <>
-      <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        custom={2}
+        variants={animation}
+        viewport={{ once: true }}
+      >
         <hr />
         <div className="flex flex-col lg:flex-row p-2 md:p-4 items-center">
           <div className="text-white sm:mt-10 sm:w-full md:w-[480px] m-auto">
@@ -21,9 +29,15 @@ export default function Info() {
           </div>
           <img src={NetflixTv} alt="netflix-gif" className="h-[350px]" />
         </div>
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        custom={3}
+        variants={animation}
+        viewport={{ once: true }}
+      >
         <hr />
         <div className="flex flex-col lg:flex-row 0-2 md:p-4 items-center">
           <img src={NetflixDownload} alt="netflix-gif" className="h-[350px]" />
@@ -36,9 +50,15 @@ export default function Info() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        custom={4}
+        variants={animation}
+        viewport={{ once: true }}
+      >
         <hr />
         <div className="flex flex-col lg:flex-row p-2 md:p-4 items-center">
           <div className="text-white sm:mt-10 sm:w-full md:w-[480px] m-auto">
@@ -52,9 +72,15 @@ export default function Info() {
           </div>
           <img src={NetflixGadgets} alt="netflix-gif" className="h-[350px]" />
         </div>
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        custom={4}
+        variants={animation}
+        viewport={{ once: true }}
+      >
         <hr />
         <div className="flex flex-col lg:flex-row 0-2 md:p-4">
           <img
@@ -72,7 +98,7 @@ export default function Info() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
       <Accordion />
       <Footer />
     </>

@@ -3,6 +3,8 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserAuth } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Movie({ item }: any) {
   const [like, setLike] = React.useState<boolean>(false);
@@ -28,7 +30,14 @@ export default function Movie({ item }: any) {
     }
   };
   return (
-    <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 ">
+    <motion.div
+      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 "
+      initial="hidden"
+      whileInView="visible"
+      custom={1}
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <img
         src={`https://image.tmdb.org/t/p/w500/${item?.backdrop_path}`}
         alt={item?.title}
@@ -46,6 +55,6 @@ export default function Movie({ item }: any) {
           )}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

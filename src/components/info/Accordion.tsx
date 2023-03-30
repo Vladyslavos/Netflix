@@ -1,6 +1,8 @@
 import React from "react";
 import AccordionItem from "./AccordionItem";
 import { data } from "./Questions";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Accordion() {
   const [open, setOpen] = React.useState<any>(false);
@@ -13,7 +15,13 @@ export default function Accordion() {
     }
   };
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      custom={2}
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <h1 className="text-white text-6xl font-bold flex justify-center">
         Frequently Asked Questions
       </h1>
@@ -31,6 +39,6 @@ export default function Accordion() {
           })}
         </div>
       </div>
-    </>
+    </motion.div>
   );
 }

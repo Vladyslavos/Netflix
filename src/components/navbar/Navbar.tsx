@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { animation } from "../../animation/animation";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const { user, logOut }: any = UserAuth();
@@ -14,7 +16,14 @@ export default function Navbar() {
     }
   };
   return (
-    <nav className="flex items-center justify-between p-4 z-[100] w-full absolute">
+    <motion.nav
+      className="flex items-center justify-between p-4 z-[100] w-full absolute"
+      initial="hidden"
+      whileInView="visible"
+      custom={1}
+      variants={animation}
+      viewport={{ once: true }}
+    >
       <Link to={"/"}>
         <img
           src="https://i.ibb.co/r5krrdz/logo.png"
@@ -45,6 +54,6 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 }
