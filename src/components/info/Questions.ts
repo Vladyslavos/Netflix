@@ -1,4 +1,4 @@
-export const data: Array<any> = [
+export const data = [
   {
     question: "What is Netflix?",
     answer:

@@ -3,7 +3,13 @@ import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { Collapse } from "react-collapse";
 
-export default function AccordionItem({ open, toggle, item }: any) {
+interface IAccordion {
+  open: boolean;
+  toggle: () => void;
+  item: any;
+}
+
+export default function AccordionItem({ open, toggle, item }: IAccordion) {
   return (
     <>
       <div>

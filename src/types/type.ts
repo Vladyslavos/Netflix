@@ -56,3 +56,8 @@ export interface IContext {
   logOut: any;
   user: any;
 }
+
+export interface IAccordion {
+  question: string;
+  answer: string;
+}
