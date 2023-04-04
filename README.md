@@ -9,6 +9,8 @@
 
 
 <p>After the user registers or logs into the account, he will be able to add movies to favorites:</p>
+
+
 ![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/67589338/229842750-bd3021a8-eaa7-45d2-a607-f94cb1aefa25.gif)
 
 
