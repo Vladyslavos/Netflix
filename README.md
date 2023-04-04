@@ -1,5 +1,5 @@
 <h1 align = "center">Netflix App on React+Vite and TypeScript</h1>
-<p><b>Description: </b>I wrote a copy of Netflix using <strong>Firebase</strong> for the back end of this project. I am using the TMDB API to get data. I used <strong>Firebase Authentication</strong> to create the login functionality and <strong>Firestore</strong> to store user data. The user can register and add movies to the favorites displayed in his account. Styles were written in Tailwind CSS. </p> 
+<p><b>Description: </b>I wrote a copy of Netflix using <strong>Firebase</strong> for the back end of this project. I used the TMDB API to get data. I used <strong>Firebase Authentication</strong> to create the login functionality and <strong>Firestore</strong> to store user data. The user can register and add movies to the favorites displayed in his account. Styles were written in Tailwind CSS. </p> 
 <a href = "https://642c344b43059e0aa482b1e4--eclectic-centaur-e9cb80.netlify.app/">LIVE</a>
 
 
